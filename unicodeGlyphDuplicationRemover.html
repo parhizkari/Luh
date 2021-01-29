@@ -1,0 +1,45 @@
+<!-- In the Name of Allah, the All-Providing and the Most Merciful -->
+<!DOCTYPE html>
+<html class="htmlMain" Content-Type="text/html; charset=utf-8" mozNoMarginBoxes>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link type="text/css" rel="stylesheet" href="Main/myStyle.css"/>
+</head>
+
+
+
+<body>
+<div class="headerEditor">
+	<img onclick="compile();" class="myButton" src="Main/images/compile.png"  title="پردازش (Shift+Enter)" align="center" width="32" height="32" style="float:right; margin-right:5px;"></div>
+
+
+
+
+<textarea id="source" placeholder="بِسمِ اللَّـهِ الرَّحمَـٰنِ الرَّحِيمِ" autofocus tabindex="0"></textarea>
+<div id="draggablePaneSeparator"></div>
+<div id="result"></div>
+
+
+
+<script>
+var source=document.getElementById("source"),
+	result=document.getElementById("result");
+
+function compile(){
+	var string=[];
+	source.value.replace(/\[\[.+?\]\]/g,"").replace(/\S/gu,function(x){
+		if(string.indexOf(x)==-1){
+			string.push(x);
+		}
+	});
+	result.innerHTML=string.join(" ").replace(/(  )/g," ");
+}
+</script>
+
+
+
+</body>
+</html>
